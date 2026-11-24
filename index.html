@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>A Letter For Ela 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-pink-1: #ffdde1;
+      --bg-pink-2: #ee9ca7;
+      --accent-pink: #ff2a6d;
+      --accent-soft: #ff758f;
+      --text-main: #4a152b;
+      --text-sub: #8a4b66;
+      --paper-bg: rgba(255, 250, 252, 0.94);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--bg-pink-1) 0%, var(--bg-pink-2) 100%);
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+      padding: 20px;
+    }
+
+    /* Floating Hearts & Sparkles */
+    .floating-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .floating-bg span {
+      position: absolute;
+      bottom: -50px;
+      font-size: 22px;
+      opacity: 0.7;
+      animation: riseSlow linear infinite;
+      filter: drop-shadow(0 4px 8px rgba(255, 42, 109, 0.2));
+    }
+
+    .floating-bg span:nth-child(1) { left: 8%;  animation-duration: 7.5s; animation-delay: 0s; }
+    .floating-bg span:nth-child(2) { left: 20%; animation-duration: 9s;   animation-delay: 1.5s; font-size: 26px; }
+    .floating-bg span:nth-child(3) { left: 35%; animation-duration: 8s;   animation-delay: 3s; }
+    .floating-bg span:nth-child(4) { left: 50%; animation-duration: 10s;  animation-delay: 0.8s; font-size: 25px; }
+    .floating-bg span:nth-child(5) { left: 65%; animation-duration: 7s;   animation-delay: 2.2s; }
+    .floating-bg span:nth-child(6) { left: 78%; animation-duration: 9.5s; animation-delay: 1.2s; font-size: 27px; }
+    .floating-bg span:nth-child(7) { left: 90%; animation-duration: 8.2s; animation-delay: 2.8s; }
+
+    @keyframes riseSlow {
+      0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+      15% {
+        opacity: 0.75;
+      }
+      50% {
+        transform: translateY(-55vh) translateX(15px) rotate(12deg);
+      }
+      100% {
+        transform: translateY(-115vh) translateX(-15px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Letter Entrance Animation */
+    .letter-wrapper {
+      width: 100%;
+      max-width: 620px;
+      position: relative;
+      z-index: 10;
+      opacity: 0;
+      transform: translateY(45px) scale(0.94) rotate(-1.5deg);
+      animation: letterReveal 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes letterReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(45px) scale(0.94) rotate(-1.5deg);
+      }
+      70% {
+        opacity: 1;
+        transform: translateY(-6px) scale(1.01) rotate(0.4deg);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0deg);
+      }
+    }
+
+    /* Romantic Letter Card */
+    .letter-card {
+      background: var(--paper-bg);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 28px;
+      border: 2px solid rgba(255, 255, 255, 0.95);
+      box-shadow:
+        0 24px 55px rgba(173, 20, 87, 0.18),
+        inset 0 0 30px rgba(255, 182, 193, 0.25);
+      padding: 36px 34px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Top Decorative Ribbon / Seal */
+    .top-seal {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .seal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #fff0f5, #ffe3ec);
+      color: var(--accent-pink);
+      border: 1px solid #ffc2d4;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      box-shadow: 0 5px 14px rgba(255, 42, 109, 0.14);
+    }
+
+    .letter-title {
+      text-align: center;
+      font-family: 'Great Vibes', cursive;
+      font-size: 46px;
+      color: var(--accent-pink);
+      line-height: 1.15;
+      margin-bottom: 20px;
+      text-shadow: 0 3px 10px rgba(255, 42, 109, 0.14);
+    }
+
+    /* Letter Body Text */
+    .letter-body {
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--text-main);
+      min-height: 240px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(8px) scale(0.96);
+      filter: blur(2px);
+      transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.28s ease;
+    }
+
+    .word.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    .paragraph-break {
+      display: block;
+      height: 14px;
+    }
+
+    /* Bottom Controls */
+    .letter-footer {
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px dashed rgba(255, 117, 143, 0.45);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .replay-btn, .back-btn {
+      background: linear-gradient(135deg, #ff2a6d, #ff758f);
+      color: #ffffff;
+      border: none;
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(255, 42, 109, 0.28);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .replay-btn:hover, .back-btn:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 8px 20px rgba(255, 42, 109, 0.36);
+    }
+
+    .back-btn {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--text-main);
+      border: 1px solid #ffc2d4;
+      box-shadow: 0 4px 12px rgba(255, 42, 109, 0.1);
+    }
+
+    @media (max-width: 600px) {
+      .letter-card {
+        padding: 26px 20px 24px;
+        border-radius: 22px;
+      }
+      .letter-title {
+        font-size: 38px;
+      }
+      .letter-body {
+        font-size: 14px;
+        line-height: 1.8;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="floating-bg">
+    <span>💖</span>
+    <span>🎈</span>
+    <span>✨</span>
+    <span>💕</span>
+    <span>🎂</span>
+    <span>💗</span>
+    <span>🌸</span>
+  </div>
+
+  <div class="letter-wrapper">
+    <div class="letter-card">
+      <div class="top-seal">
+        <div class="seal-badge">💌 A Special Birthday Letter</div>
+      </div>
+
+      <h1 class="letter-title">Happy Birthday, Ela</h1>
+
+      <!-- আপনি চাইলে নিচের letterText ভ্যারিয়েবলের ভেতরের লেখাটি নিজের মতো করে এডিট করে নিতে পারবেন -->
+      <div class="letter-body" id="letterBody"></div>
+
+      <div class="letter-footer">
+        <a href="index.html" class="back-btn">← Back to Lock</a>
+        <button class="replay-btn" onclick="startWordByWordLetter()">↻ Replay Letter</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // এই লেখাটি আপনি নিজের ইচ্ছেমতো পরিবর্তন করে নিতে পারবেন
+    const letterText = `Dear Ela,
+
+On your special day, I just wanted to pause and tell you how much joy you bring into my world. Every little moment, every smile, and every memory feels brighter just because you are in it.
+
+May this new year of your life bring you endless happiness, peace, laughter, and every single dream your heart holds close. You deserve all the sweetest things in the universe.
+
+Keep shining the way you always do, and never forget how special you are.
+
+Happy Birthday once again, with all my love.`;
+
+    const letterBodyEl = document.getElementById("letterBody");
+    let animationTimers = [];
+
+    function clearAllTimers() {
+      animationTimers.forEach(timerId => clearTimeout(timerId));
+      animationTimers = [];
+    }
+
+    function startWordByWordLetter() {
+      clearAllTimers();
+      letterBodyEl.innerHTML = "";
+
+      const paragraphs = letterText.split(/\n\s*\n/);
+      let delay = 250;
+      const wordStepDelay = 125; // প্রতিটি শব্দের মাঝের সময় (ms)
+
+      paragraphs.forEach((paragraph, pIndex) => {
+        const words = paragraph.trim().split(/\s+/);
+
+        words.forEach((word, wIndex) => {
+          const span = document.createElement("span");
+          span.className = "word";
+          span.textContent = word;
+          letterBodyEl.appendChild(span);
+
+          // শব্দের পর একটি স্পেস যোগ করা
+          if (wIndex < words.length - 1) {
+            letterBodyEl.appendChild(document.createTextNode(" "));
+          }
+
+          const currentDelay = delay;
+          const timer = setTimeout(() => {
+            span.classList.add("visible");
+          }, currentDelay);
+
+          animationTimers.push(timer);
+          delay += wordStepDelay;
+        });
+
+        // প্যারাগ্রাফের মাঝে গ্যাপ তৈরি করা
+        if (pIndex < paragraphs.length - 1) {
+          const br = document.createElement("span");
+          br.className = "paragraph-break";
+          letterBodyEl.appendChild(br);
+          delay += 260;
+        }
+      });
+    }
+
+    // পেজ লোড হওয়ার পর চিঠির অ্যানিমেশন শুরু হবে
+    window.addEventListener("DOMContentLoaded", () => {
+      const startTimer = setTimeout(() => {
+        startWordByWordLetter();
+      }, 450);
+      animationTimers.push(startTimer);
+    });
+  </script>
+</body>
+</html>
